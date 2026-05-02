@@ -24,6 +24,10 @@ public class Piece {
 
     //Constructor
     public Piece(Shape shape){
+        /*
+        Basic syntax is
+            Piece myPiece = new Piece(Piece.Shape.O_SHAPE);
+        */
         this.currentBlocks = shape.blocks;
         this.id = shape.id;
         this.x = 3;
