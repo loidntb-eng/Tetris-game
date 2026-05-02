@@ -34,6 +34,19 @@ public class Piece {
         this.y = 0;
     }
 
+    public Piece() {
+        /*
+        Overloading for random Piece generation
+        */
+        Shape[] shapes = Shape.values(); //Store all enum values
+        Shape randomShape = shapes[(int)(Math.random() * shapes.length)];
+        this.currentBlocks = randomShape.blocks;
+        this.id = randomShape.id;
+        this.x = 3;
+        this.y = 0;
+    }
+
+
     //Getters
     public int[][] getBlock() {return currentBlocks;}
     public int getX() {return x;}
@@ -58,6 +71,7 @@ public class Piece {
 
     //Movement
     public void moveDown() {y++;}
+    public void moveUp() {y--;}
     public void moveLeft() {x--;}
     public void moveRight() {x++;}
 

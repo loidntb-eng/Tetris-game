@@ -5,7 +5,7 @@ public class Grid {
     
     public Grid() {
         this.width = Constants.GRID_WIDTH;
-        this.height = Constants.GRID_HEIGHT;
+        this.height = Constants.GRID_HEIGHT + 4; //I added 4 here to ensure there is an invisible area for the pieces to slide down smoothly
         this.grid = new int[height][width];
         clear();
     }
@@ -20,7 +20,7 @@ public class Grid {
     
     // Check if piece can be placed
     public boolean canPlace(Piece piece) {
-        for (int[] block : piece.getBlocks()) {
+        for (int[] block : piece.getBlock()) {
             int row = block[0];
             int col = block[1];
             
@@ -39,11 +39,11 @@ public class Grid {
     
     // Place piece permanently
     public void placePiece(Piece piece) {
-        for (int[] block : piece.getBlocks()) {
+        for (int[] block : piece.getBlock()) {
             int row = block[0];
             int col = block[1];
             if (row >= 0 && row < height && col >= 0 && col < width) {
-                grid[row][col] = piece.getColorIndex() + 1;
+                grid[row][col] = piece.getId() + 1;
             }
         }
     }

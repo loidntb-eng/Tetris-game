@@ -2,7 +2,6 @@ import javax.swing.*;
 
 public class Game {
     private static GamePanel gamePanel;
-    
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("Tetris Game");
@@ -76,9 +75,9 @@ class GameLogic {
     }
     
     public void rotatePiece() {
-        currentPiece.rotate();
+        currentPiece.rotate(true);
         if (!grid.canPlace(currentPiece)) {
-            currentPiece.rotateBack();
+            currentPiece.rotate(false);
         }
     }
     
