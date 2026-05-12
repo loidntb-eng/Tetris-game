@@ -1,29 +1,27 @@
+// Person 1
+// i put all the numbers here so we can change them easily
+
 public class Constants {
-    // Grid settings
-    public static final int GRID_WIDTH = 10;
-    public static final int GRID_HEIGHT = 20;
-    public static final int CELL_SIZE = 30;
-    
-    // Window settings
-    public static final int WINDOW_WIDTH = GRID_WIDTH * CELL_SIZE;
-    public static final int WINDOW_HEIGHT = GRID_HEIGHT * CELL_SIZE + 50;
-    
-    // Game speed (milliseconds)
-    public static final int FALL_SPEED = 200;
-    
-    // Colors
-    public static final java.awt.Color BG_COLOR = new java.awt.Color(0, 0, 0);
-    public static final java.awt.Color GRID_COLOR = new java.awt.Color(50, 50, 50);
-    public static final java.awt.Color TEXT_COLOR = new java.awt.Color(255, 255, 255);
-    
-    // Piece colors (7 Tetris pieces)
-    public static final java.awt.Color[] PIECE_COLORS = {
-        new java.awt.Color(0, 255, 255),      // I - Cyan
-        new java.awt.Color(255, 255, 0),      // O - Yellow
-        new java.awt.Color(128, 0, 128),      // T - Purple
-        new java.awt.Color(0, 255, 0),        // S - Green
-        new java.awt.Color(255, 0, 0),        // Z - Red
-        new java.awt.Color(0, 0, 255),        // J - Blue
-        new java.awt.Color(255, 165, 0)       // L - Orange
-    };
+
+	public static final int ROWS = 20;
+	public static final int COLS = 10;
+	public static final int TILE = 30;  // size of each square in pixels
+
+	// i calculated the window size manually
+	// board is 10*30 = 300 wide
+	// side panel is 150
+	// total = 450
+	public static final int BOARD_W = 300;
+	public static final int BOARD_H = 600;
+	public static final int PANEL_W = 150;
+
+	// game speed - how many milliseconds between each drop
+	// smaller number = faster
+	public static final int SPEED_LEVEL1 = 800;
+	public static final int SPEED_LEVEL2 = 650;
+	public static final int SPEED_LEVEL3 = 500;
+	public static final int SPEED_LEVEL4 = 380;
+	public static final int SPEED_LEVEL5 = 270;
+	// i didnt do more levels because 5 is already very fast
+
 }
