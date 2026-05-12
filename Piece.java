@@ -181,13 +181,16 @@ public class Piece {
 
 	// set the shape array and color based on type
 	void setShapeAndColor() {
-		if (type == 0) { shape = I_ROTS[rotation]; color = Color.CYAN; }
-		if (type == 1) { shape = O_ROTS[rotation]; color = Color.YELLOW; }
-		if (type == 2) { shape = T_ROTS[rotation]; color = Color.MAGENTA; }
-		if (type == 3) { shape = S_ROTS[rotation]; color = Color.GREEN; }
-		if (type == 4) { shape = Z_ROTS[rotation]; color = Color.RED; }
-		if (type == 5) { shape = J_ROTS[rotation]; color = Color.BLUE; }
-		if (type == 6) { shape = L_ROTS[rotation]; color = Color.ORANGE; }
+		switch (type) {
+		    case 0 -> { shape = I_ROTS[rotation]; color = Color.CYAN; }
+		    case 1 -> { shape = O_ROTS[rotation]; color = Color.YELLOW; }
+		    case 2 -> { shape = T_ROTS[rotation]; color = Color.MAGENTA; }
+		    case 3 -> { shape = S_ROTS[rotation]; color = Color.GREEN; }
+		    case 4 -> { shape = Z_ROTS[rotation]; color = Color.RED; }
+		    case 5 -> { shape = J_ROTS[rotation]; color = Color.BLUE; }
+    		case 6 -> { shape = L_ROTS[rotation]; color = Color.ORANGE; }
+}
+
 	}
 
 	// go to next rotation
