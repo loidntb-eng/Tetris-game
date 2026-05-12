@@ -3,8 +3,6 @@ import java.awt.*;
 import java.awt.event.*;
 
 // GamePanel - Person 3
-// this took me forever but it works now
-// DO NOT TOUCH the drawBoard method i spent 3 hours on it
 
 public class GamePanel extends JPanel implements KeyListener {
 
