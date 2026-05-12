@@ -1,99 +1,23 @@
 import javax.swing.*;
 
-public class Game {
-    private static GamePanel gamePanel;
-    
-    public static void main(String[] args) {
-        try {
-            SwingUtilities.invokeLater(() -> {
-                try {
-                    JFrame frame = new JFrame("Tetris Game");
-                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    frame.setResizable(false);
-                    
-                    gamePanel = new GamePanel();
-                    frame.add(gamePanel);
-                    
-                    frame.pack();
-                    frame.setLocationRelativeTo(null);
-                    frame.setVisible(true);
-                    
-                    gamePanel.start();
-                } catch (Exception e) {
-                    System.err.println("Error creating GUI: " + e);
-                    e.printStackTrace();
-                }
-            });
-        } catch (Exception e) {
-            System.err.println("Main error: " + e);
-            e.printStackTrace();
-        }
-    }
-}
+// Person 1
+// main class - runs the game
 
-class GameLogic {
-    private final Grid grid;
-    private Piece currentPiece;
-    private int score = 0;
-    private boolean gameOver = false;
-    private long lastFallTime;
-    
-    public GameLogic() {
-        this.grid = new Grid();
-        this.currentPiece = new Piece();
-        this.lastFallTime = System.currentTimeMillis();
-    }
-    
-    public void update() {
-        long currentTime = System.currentTimeMillis();
-        
-        if (currentTime - lastFallTime > Constants.FALL_SPEED) {
-            movePieceDown();
-            lastFallTime = currentTime;
-        }
-    }
-    
-    public void movePieceDown() {
-        currentPiece.moveDown();
-        
-        if (!grid.canPlace(currentPiece)) {
-            currentPiece.moveUp();
-            grid.placePiece(currentPiece);
-            
-            int linesCleared = grid.clearLines();
-            score += linesCleared * 100;
-            
-            currentPiece = new Piece();
-            
-            if (!grid.canPlace(currentPiece)) {
-                gameOver = true;
-            }
-        }
-    }
-    
-    public void movePieceLeft() {
-        currentPiece.moveLeft();
-        if (!grid.canPlace(currentPiece)) {
-            currentPiece.moveRight();
-        }
-    }
-    
-    public void movePieceRight() {
-        currentPiece.moveRight();
-        if (!grid.canPlace(currentPiece)) {
-            currentPiece.moveLeft();
-        }
-    }
-    
-    public void rotatePiece() {
-        currentPiece.rotate();
-        if (!grid.canPlace(currentPiece)) {
-            currentPiece.rotateBack();
-        }
-    }
-    
-    public Grid getGrid() { return grid; }
-    public Piece getCurrentPiece() { return currentPiece; }
-    public int getScore() { return score; }
-    public boolean isGameOver() { return gameOver; }
+public class Game {
+
+	public static void main(String[] args) {
+
+		JFrame window = new JFrame("Tetris");
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		window.setResizable(false);
+
+		GamePanel gp = new GamePanel();
+		window.add(gp);
+
+		window.pack(); // resize window to fit panel
+		window.setLocationRelativeTo(null); // open in center of screen
+		window.setVisible(true);
+
+	}
+
 }
