@@ -168,6 +168,7 @@ public class Piece {
 		x = 0;
 		y = 0;
 	}
+	
 
 	// specific piece by type (used for hold)
 	public Piece(int t) {
@@ -180,13 +181,16 @@ public class Piece {
 
 	// set the shape array and color based on type
 	void setShapeAndColor() {
-		if (type == 0) { shape = I_ROTS[rotation]; color = Color.CYAN; }
-		if (type == 1) { shape = O_ROTS[rotation]; color = Color.YELLOW; }
-		if (type == 2) { shape = T_ROTS[rotation]; color = Color.MAGENTA; }
-		if (type == 3) { shape = S_ROTS[rotation]; color = Color.GREEN; }
-		if (type == 4) { shape = Z_ROTS[rotation]; color = Color.RED; }
-		if (type == 5) { shape = J_ROTS[rotation]; color = Color.BLUE; }
-		if (type == 6) { shape = L_ROTS[rotation]; color = Color.ORANGE; }
+		switch (type) {
+		    case 0 -> { shape = I_ROTS[rotation]; color = Color.CYAN; }
+		    case 1 -> { shape = O_ROTS[rotation]; color = Color.YELLOW; }
+		    case 2 -> { shape = T_ROTS[rotation]; color = Color.MAGENTA; }
+		    case 3 -> { shape = S_ROTS[rotation]; color = Color.GREEN; }
+		    case 4 -> { shape = Z_ROTS[rotation]; color = Color.RED; }
+		    case 5 -> { shape = J_ROTS[rotation]; color = Color.BLUE; }
+    		case 6 -> { shape = L_ROTS[rotation]; color = Color.ORANGE; }
+}
+
 	}
 
 	// go to next rotation
@@ -202,70 +206,4 @@ public class Piece {
 		if (rotation < 0) rotation = 3;
 		setShapeAndColor();
 	}
-
-}
-
-    public Piece() {
-        this.shapeIndex = (int)(Math.random() * SHAPES.length);
-        this.colorIndex = shapeIndex;
-        this.x = Constants.GRID_WIDTH / 2 - 1;
-        this.y = 0;
-        this.rotationState = 0;
-        this.blocks = new int[4][2];
-        updateBlocks();
-    }
-    
-    public void moveDown() {
-        y++;
-        updateBlocks();
-    }
-    
-    public void moveUp() {
-        y--;
-        updateBlocks();
-    }
-    
-    public void moveLeft() {
-        x--;
-        updateBlocks();
-    }
-    
-    public void moveRight() {
-        x++;
-        updateBlocks();
-    }
-    
-    public void rotate() {
-        rotationState = (rotationState + 1) % 4;
-        updateBlocks();
-    }
-    
-    public void rotateBack() {
-        rotationState = (rotationState + 3) % 4;
-        updateBlocks();
-    }
-    
-    private void updateBlocks() {
-        int[][] shape = SHAPES[shapeIndex][rotationState];
-        for (int i = 0; i < 4; i++) {
-            blocks[i][0] = y + shape[i][0];
-            blocks[i][1] = x + shape[i][1];
-        }
-    }
-    
-    public int[][] getBlocks() {
-        return blocks;
-    }
-    
-    public int getColorIndex() {
-        return colorIndex;
-    }
-    
-    public int getPieceX(int index) {
-        return blocks[index][1];
-    }
-    
-    public int getPieceY(int index) {
-        return blocks[index][0];
-    }
 }
